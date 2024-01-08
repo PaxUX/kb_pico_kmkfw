@@ -1,5 +1,7 @@
 This is a keyboard layout for a kmkfw project
 
+UPDATE:  this is for a single PICO setup so it controls both keypads directly
+
 The following the 3D STL location for the keyboard
   https://www.thingiverse.com/thing:6372854
 
