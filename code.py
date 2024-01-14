@@ -68,7 +68,7 @@ class lockneoled:
     def before_matrix_scan(self, keyboard):
         return
 
-#Nomral Single
+#Create Keyboard
 keyboard = KMKKeyboard()
 #keyboard.debug_enabled = True
 
@@ -154,6 +154,7 @@ rgb = RGB(pixel_pin=board.GP22, num_pixels=vNumLEDs, val_limit=100, hue_default=
 #   testing the lights  -- we have everything required to test...
 # rgb.set_rgb((100, 100, 100), 0)
 # rgb.set_rgb((100, 100, 100), 1)
+# rgb.set_rgb((100, 100, 100), 2)
 # print("Lightes on")
 # time.sleep(10)
 # print("Lightes off")
@@ -161,7 +162,7 @@ rgb = RGB(pixel_pin=board.GP22, num_pixels=vNumLEDs, val_limit=100, hue_default=
 #Setup variable to manage RGB for 3 lights
 # simple bit fliping kind of thing here but using R G B as our bits
 # each color is its own light, limit is 3 keys per LED as RGB
-# this setup has a total of 6 independent lights with our 3 Neo Pixel LEDs
+# this setup has a total of 9 independent lights with our 3 Neo Pixel LEDs
 #       R G B   R G B   R G B
 vRGB = [0,0,0],[0,0,0],[0,0,0]
 vR, vG, vB = 0, 1, 2
