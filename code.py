@@ -49,7 +49,7 @@ side = SplitSide.RIGHT if str(getmount('/').label)[-1] == 'R' else SplitSide.LEF
 #lockneoled is an empty module that processes on every after_matrix_scan (main loop)
 #it does a call back to a method passed in when init and is
 #used to manage caps/num lock status LEDs/RGB on/off
-#from lockneoled import lockneoled
+#from lockneoled import lockneoled  # code here replaces the lockneoled.py file
 class lockneoled:
     def __init__(self, sFun):
         self.SetLight = sFun
@@ -178,8 +178,8 @@ vNUMinitStat = True
 vCAPLockStat = False
 vNUMLockStat = False
 #Assigning 2 colors to Caps/Num locks
-# L0 vB -- This is Caps Lock used by lockneoled.py
-# L1 vG -- This is Num Lock used by lockneoled.py
+# L1 vB -- This is Caps Lock used by lockneoled
+# L2 vG -- This is Num Lock used by lockneoled
 # Seems to take about 4-8 loops before the keyboard's backend reads the Num Lock correctly???
 StupidLoop = 1
 WaitCount = 20
@@ -356,9 +356,9 @@ def CTRLoff(key, keyboard, *args):	# L0 vG
     rgb.set_rgb((vRGB[vLightNum][vR], vRGB[vLightNum][vG], vRGB[vLightNum][vB]), vLightNum)
     return True
 
-# L0 vB -- This is Caps Lock used by lockneoled.py
-# L0 vB -- This is Caps Lock used by lockneoled.py
-# L0 vB -- This is Caps Lock used by lockneoled.py
+# L0 vB -- This is Caps Lock used by lockneoled
+# L0 vB -- This is Caps Lock used by lockneoled
+# L0 vB -- This is Caps Lock used by lockneoled
 
 #Light 1
 def FNon(key, keyboard, *args):		# L1 vR
@@ -371,6 +371,11 @@ def FNoff(key, keyboard, *args):	# L1 vR
     vRGB[vLightNum][vR] = 0 
     rgb.set_rgb((vRGB[vLightNum][vR], vRGB[vLightNum][vG], vRGB[vLightNum][vB]), vLightNum)
     return True
+
+# L2 vG -- This is Num Lock used by lockneoled
+# L2 vG -- This is Num Lock used by lockneoled
+# L2 vG -- This is Num Lock used by lockneoled
+
 def Lay1on(key, keyboard, *args):	# L1 vB
     vLightNum = 1
     vRGB[vLightNum][vB] = vBrightness 
@@ -382,20 +387,17 @@ def Lay1off(key, keyboard, *args):	# L1 vB
     rgb.set_rgb((vRGB[vLightNum][vR], vRGB[vLightNum][vG], vRGB[vLightNum][vB]), vLightNum)
     return True
 
-# L1 vG -- This is Num Lock used by lockneoled.py
-# L1 vG -- This is Num Lock used by lockneoled.py
-# L1 vG -- This is Num Lock used by lockneoled.py
 
 # Following will link the On/Off Functions to the right Key/action
-KC.LSHIFT.before_press_handler(SSon) #call the key with the after_press_handler
+KC.LSHIFT.before_press_handler(SSon) 
 KC.LSHIFT.after_release_handler(SSoff)
 KC.LCTRL.before_release_handler(CTRLoff)
 KC.LCTRL.after_press_handler(CTRLon)
 # Layers share LED
 Layer1ALT.before_press_handler(Lay1on)
 Layer1ALT.after_release_handler(Lay1off)
-Layer2.before_press_handler(FNon) #call the key with the after_press_handler
-Layer2.after_release_handler(FNoff) #call the key with the after_press_handler
+Layer2.before_press_handler(FNon) 
+Layer2.after_release_handler(FNoff) 
 
 
 # Record keys to allow short multi key combo macro
@@ -415,7 +417,7 @@ keyboard.modules.append(dynamicSequences)
 #     on_press=lambda *args: onRecordPlay,
 # )
 
-#Creating Tab Dance key, Stop, Record, Play... Easier to read this way in TD code
+#Creating Tab Dance key, Stop, Play, Record... Easier to read this way in TD code
 make_key(
     names=('MACRECOD',),
     on_press=lambda *args: dynamicSequences._record_sequence(KC.RECORD_SEQUENCE(0), keyboard ),
