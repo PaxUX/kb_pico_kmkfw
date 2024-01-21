@@ -25,8 +25,10 @@ from kmk.kmk_keyboard import KMKKeyboard
 from kmk.keys import KC, make_key
 from kmk.scanners import DiodeOrientation
 
-#used by the Self.Matrix Next 2 lines can be removed
+#used by the Self.Matrix next lines can be removed
 from kmk.scanners.keypad import MatrixScanner
+
+# Multi key combos
 from kmk.handlers.sequences import simple_key_sequence
 
 #enable Irish type keys
@@ -470,6 +472,27 @@ class macroRecCheck:
 #Link new Class to Extenstions
 mRecMarco = macroRecCheck(RecordChkLED)
 keyboard.modules.append(mRecMarco)
+
+
+ ####    ####   #    #  #####    ####           #    #  ######   #   #   ####
+#    #  #    #  ##  ##  #    #  #    #          #   #   #         # #   #
+#       #    #  # ## #  #####   #    #          ####    #####      #     ####
+#       #    #  #    #  #    #  #    #          #  #    #          #         #
+#    #  #    #  #    #  #    #  #    #          #   #   #          #    #    #
+ ####    ####   #    #  #####    ####           #    #  ######     #     ####
+
+#Next
+tmuxCTLBn = simple_key_sequence( (KC.LCTL(KC.B), KC.N, ) )
+#Previous
+tmuxCTLBp = simple_key_sequence( (KC.LCTL(KC.B), KC.P, ) )
+#Create
+tmuxCTLBc = simple_key_sequence( (KC.LCTL(KC.B), KC.C, ) )
+#Disconnect
+tmuxCTLBd = simple_key_sequence( (KC.LCTL(KC.B), KC.D, ) )
+#Scroll mode
+tmuxCTLBscroll = simple_key_sequence( (KC.LCTL(KC.B), KC.PGUP, ) )
+#Select Session
+tmuxCTLBsess = simple_key_sequence( (KC.LCTL(KC.B), KC.S, ) )
 
 
 #    #
