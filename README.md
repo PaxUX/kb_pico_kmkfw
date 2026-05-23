@@ -4,7 +4,7 @@ The following the 3D STL location for the keyboard
   https://www.thingiverse.com/thing:6372854
 
 For more details on how to setup read their site:
-  http://kmkfw.io/docs/Getting_Started/
+  [http://kmkfw.io/docs/Getting_Started/](https://github.com/KMKfw/kmk_firmware)
 
 There are two programs here.
 - code.py which is the main keyboard
